@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Password Generator</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <h1>Password Generator</h1>
+    <p class="subtitle">Create strong random passwords and check how strong your own password is.</p>
+
+    <!-- Generated password + copy button -->
+    <div class="output-row">
+      <input id="passwordOutput" type="text" readonly placeholder="Click Generate" aria-label="Generated password" />
+      <button id="copyBtn" class="btn-small" type="button">Copy</button>
+    </div>
+    <p id="copyMessage" class="message" role="status"></p>
+
+    <!-- Strength meter for the generated password -->
+    <div class="meter"><div id="generatedMeter" class="meter-fill" data-level="0"></div></div>
+    <p id="generatedLabel" class="strength-label"></p>
+
+    <!-- Options -->
+    <div class="control">
+      <label for="length">Length: <strong id="lengthValue">16</strong></label>
+      <input id="length" type="range" min="8" max="32" value="16" />
+    </div>
+
+    <fieldset class="options">
+      <legend>Include</legend>
+      <label><input type="checkbox" id="optUpper" checked /> Uppercase (A-Z)</label>
+      <label><input type="checkbox" id="optLower" checked /> Lowercase (a-z)</label>
+      <label><input type="checkbox" id="optNumbers" checked /> Numbers (0-9)</label>
+      <label><input type="checkbox" id="optSymbols" checked /> Symbols (!@#$)</label>
+    </fieldset>
+
+    <p id="errorMessage" class="error" role="alert"></p>
+    <button id="generateBtn" class="btn" type="button">Generate Password</button>
+
+    <hr />
+
+    <!-- Strength checker for a password the user types -->
+    <h2>Check your own password</h2>
+    <div class="output-row">
+      <input id="checkInput" type="password" placeholder="Type a password to test" autocomplete="off" aria-label="Password to check" />
+    </div>
+    <label class="show-row"><input type="checkbox" id="showCheck" /> Show password</label>
+    <div class="meter"><div id="checkMeter" class="meter-fill" data-level="0"></div></div>
+    <p id="checkLabel" class="strength-label"></p>
+    <p class="note">The check runs only in your browser. Nothing you type is sent anywhere.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
